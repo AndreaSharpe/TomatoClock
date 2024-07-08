@@ -1,0 +1,11 @@
+release/body.o
+release/changepassworddialog.o
+release/loginSystem.o
+release/main.o
+release/reset.o
+release/task.o
+release/qrc_images.o
+release/moc_body.o
+release/moc_changepassworddialog.o
+release/moc_loginSystem.o
+release/moc_reset.o

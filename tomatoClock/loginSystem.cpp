@@ -1,8 +1,17 @@
 #include "loginsystem.h"
 #include "ui_loginsystem.h"
+#include "body.h"
+#include "reset.h"
 #include <QSqlRecord>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <fstream>
+// #include<iostream>
+#include <string>
+using namespace std;
+
+
+ofstream file("../../task.txt");
 
 LoginSystem::LoginSystem(QWidget *parent) :
     QMainWindow(parent),
@@ -47,6 +56,7 @@ LoginSystem::~LoginSystem()
     delete ui;
 }
 
+
 void LoginSystem::on_loginButton_clicked()
 {
     this->loggedIn = Login(ui->usernameBox->text(), ui->passwordBox->text());
@@ -55,9 +65,20 @@ void LoginSystem::on_loginButton_clicked()
     {
         this->username = ui->usernameBox->text();
         this->password = ui->passwordBox->text();
-
+        string str;
+        str = this->username.toStdString();
+        // qDebug()<<str;
+        file<<str;
+        file.close();
         ui->loginLabel->setText("");
-        ui->winStack->setCurrentIndex(2);
+        Body *b = new Body;
+        b->show();
+        this->close();
+
+        // ui->winStack->setCurrentIndex(2);
+
+
+
     }
     else
     {
@@ -117,19 +138,19 @@ void LoginSystem::on_completeRegButton_clicked()
 
     if(ui->uBox->text() == "")
     {
-        ui->uBox->setPlaceholderText("Username EMPTY!");
+        ui->uBox->setPlaceholderText("用户名不能为空!");
         halt = true;
     }
 
     if(ui->pBox->text() == "")
     {
-        ui->pBox->setPlaceholderText("Password EMPTY!");
+        ui->pBox->setPlaceholderText("密码不能为空！");
         halt = true;
     }
 
     if(ui->eBox->text() == "")
     {
-        ui->eBox->setPlaceholderText("E-mail EMPTY!");
+        ui->eBox->setPlaceholderText("邮箱不能为空！");
         halt = true;
     }
 
@@ -160,7 +181,7 @@ void LoginSystem::on_completeRegButton_clicked()
         if(cQuery.next())
         {
             ui->uBox->setText("");
-            ui->uBox->setPlaceholderText("Choose a different Username!");
+            ui->uBox->setPlaceholderText("该用户名已存在!");
             halt = true;
         }
     }
@@ -174,7 +195,7 @@ void LoginSystem::on_completeRegButton_clicked()
         if(cQuery2.next())
         {
             ui->eBox->setText("");
-            ui->eBox->setPlaceholderText("Use another E-mail!");
+            ui->eBox->setPlaceholderText("该邮箱已被注册!");
             halt = true;
         }
     }
@@ -218,7 +239,7 @@ void LoginSystem::on_completeRegButton_clicked()
             // ui->mBox->setText("");
             // ui->lBox->setText("");
             ui->rpLabel->setText("<img src=\":user.png\" />");
-            ui->loginLabel->setText("Registration Successful! You can now login.");
+            ui->loginLabel->setText("注册成功，您现在可以登录！");
             ui->winStack->setCurrentIndex(0);
             qDebug()<<"insert success!";
         }
@@ -571,3 +592,13 @@ void LoginSystem::on_backButton_5_clicked()
 //         }
 //     }
 // }
+
+
+
+void LoginSystem::on_reset_clicked()
+{
+    reset *w = new reset;
+    w->show();
+    this->close();
+}
+

@@ -161,7 +161,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Login">
       <widget class="QFrame" name="frame_2">
@@ -424,6 +424,12 @@ font-family: 'Droid Sans';</string>
           <kerning>true</kerning>
          </font>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="whatsThis">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -432,7 +438,7 @@ font-family: 'Droid Sans';</string>
 padding-right: 20px;
 border-radius: 20px;
 background: #333;
-color: #fefefe;</string>
+color: rgb(185, 185, 185);</string>
         </property>
         <property name="text">
          <string/>
@@ -444,7 +450,7 @@ color: #fefefe;</string>
          <number>0</number>
         </property>
         <property name="placeholderText">
-         <string>Username</string>
+         <string>用户名</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="passwordBox">
@@ -668,7 +674,7 @@ color: #fefefe;</string>
 padding-right: 20px;
 border-radius: 20px;
 background: #333;
-color: #fefefe;</string>
+color: rgb(185, 185, 185);</string>
         </property>
         <property name="inputMethodHints">
          <set>Qt::ImhNone</set>
@@ -686,7 +692,7 @@ color: #fefefe;</string>
          <number>0</number>
         </property>
         <property name="placeholderText">
-         <string>Password</string>
+         <string>密码</string>
         </property>
        </widget>
        <widget class="QPushButton" name="loginButton">
@@ -705,7 +711,7 @@ Background: rgb(221, 60, 20);
 Color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>SIGN IN</string>
+         <string>登录</string>
         </property>
        </widget>
        <widget class="QPushButton" name="regButton">
@@ -724,7 +730,7 @@ Background: rgb(255, 145, 20);
 Color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>SIGN UP</string>
+         <string>注册</string>
         </property>
        </widget>
        <widget class="QLabel" name="loginLabel">
@@ -760,6 +766,23 @@ background-image: url(:/user.png);</string>
          <string/>
         </property>
        </widget>
+       <widget class="QPushButton" name="reset">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>280</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:black;
+background: rgb(255, 182, 98);</string>
+        </property>
+        <property name="text">
+         <string>忘记密码？</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="page_2">
@@ -772,8 +795,15 @@ background-image: url(:/user.png);</string>
          <height>451</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background: rgb(255, 182, 98);</string>
+        <string notr="true">background: rgb(255, 182, 98);
+height:751px;
+width:451px;</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -1043,7 +1073,7 @@ color: #fefefe;</string>
          <number>0</number>
         </property>
         <property name="placeholderText">
-         <string>Username</string>
+         <string>用户名</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="pBox">
@@ -1285,7 +1315,7 @@ color: #fefefe;</string>
          <number>0</number>
         </property>
         <property name="placeholderText">
-         <string>Password</string>
+         <string>密码</string>
         </property>
        </widget>
        <widget class="QPushButton" name="completeRegButton">
@@ -1304,7 +1334,7 @@ Background: #933;
 Color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>COMPLETE REGISTRATION</string>
+         <string>注册</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="eBox">
@@ -1546,15 +1576,15 @@ color: #fefefe;</string>
          <number>0</number>
         </property>
         <property name="placeholderText">
-         <string>E-mail</string>
+         <string>邮箱</string>
         </property>
        </widget>
        <widget class="QPushButton" name="backButton">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>400</y>
-          <width>171</width>
+          <x>50</x>
+          <y>390</y>
+          <width>61</width>
           <height>21</height>
          </rect>
         </property>
@@ -1565,7 +1595,13 @@ Background: #933;
 Color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>BACK TO LOGIN PAGE</string>
+         <string>返回</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
         </property>
        </widget>
        <widget class="QLabel" name="regLabel">
@@ -1587,17 +1623,20 @@ Color: #fefefe;</string>
        <widget class="QLabel" name="rpLabel">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>120</y>
-          <width>128</width>
-          <height>128</height>
+          <x>120</x>
+          <y>90</y>
+          <width>151</width>
+          <height>161</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>&lt;img src=&quot;:user.png&quot; /&gt;</string>
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="images.qrc">:/Imgs/023-10-27 161236.png</pixmap>
         </property>
        </widget>
        <widget class="QPushButton" name="uplButton">
@@ -1617,7 +1656,7 @@ Background: #933;
 Color: #fefefe;</string>
         </property>
         <property name="text">
-         <string>UPLOAD PICTURE</string>
+         <string>上传图片</string>
         </property>
        </widget>
       </widget>
@@ -2709,6 +2748,8 @@ color: rgb(214, 214, 214);</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

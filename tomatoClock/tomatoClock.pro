@@ -10,18 +10,33 @@ CONFIG += c++17
 
 SOURCES += \
     body.cpp \
+    changepassworddialog.cpp \
     loginSystem.cpp \
-    main.cpp
+    main.cpp \
+    reset.cpp \
+    task.cpp
 
 HEADERS += \
     body.h \
-    loginSystem.h
+    changepassworddialog.h \
+    loginSystem.h \
+    reset.h \
+    task.h
 
 FORMS += \
     body.ui \
-    loginsystem.ui
+    changepassworddialog.ui \
+    loginsystem.ui \
+    reset.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Imgs/设置.png \
+    Imgs/设置.png
+
+RESOURCES += \
+    images.qrc

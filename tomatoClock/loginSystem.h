@@ -71,6 +71,9 @@ private slots:
 
     // void on_delAButton_clicked();
 
+
+    void on_reset_clicked();
+
 private:
     Ui::LoginSystem *ui;
     QString username;

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Imgs/023-10-27 161236.png</file>
+        <file>Imgs/clockB.png</file>
+        <file>Imgs/clockW.png</file>
+        <file>Imgs/homeB.png</file>
+        <file>Imgs/homeW.png</file>
+        <file>Imgs/labelB.png</file>
+        <file>Imgs/labelW.png</file>
+        <file>Imgs/personalB.png</file>
+        <file>Imgs/personalW.png</file>
+    </qresource>
+</RCC>
