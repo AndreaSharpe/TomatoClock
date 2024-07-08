@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>reset</class>
+ <widget class="QDialog" name="reset">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>301</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #ADD8E6;
+}</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>-20</y>
+     <width>321</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {  
+    background-color: white; /* 设置背景色为白色 */  
+    border: 2px solid white; /* 设置边框为白色，宽度为2px */  
+    border-radius: 0px; /* 设置边框圆角为0，即方形边框 */  
+    padding: 5px; /* 添加内边距 */  
+    box-shadow: inset 0 0 0 1px #cccccc; /* 添加内部阴影，颜色稍深于背景色 */  
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {  
+    background-color: white; /* 设置背景色为白色 */  
+    border: 2px solid white; /* 设置边框为白色，宽度为2px */  
+    border-radius: 0px; /* 设置边框圆角为0，即方形边框 */  
+    padding: 5px; /* 添加内边距 */  
+    box-shadow: inset 0 0 0 1px #cccccc; /* 添加内部阴影，颜色稍深于背景色 */  
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {  
+    background-color: white; /* 设置背景色为白色 */  
+    border: 2px solid white; /* 设置边框为白色，宽度为2px */  
+    border-radius: 0px; /* 设置边框圆角为0，即方形边框 */  
+    padding: 5px; /* 添加内边距 */  
+    box-shadow: inset 0 0 0 1px #cccccc; /* 添加内部阴影，颜色稍深于背景色 */  
+}</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>52</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;微软雅黑&quot;;
+font: 10pt &quot;黑体&quot;;</string>
+      </property>
+      <property name="text">
+       <string>请输入邮箱</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;黑体&quot;;</string>
+      </property>
+      <property name="text">
+       <string>验证码</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;黑体&quot;;</string>
+      </property>
+      <property name="text">
+       <string>新密码</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>260</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {  
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  
+}  
+  
+QPushButton:hover {  
+    background-color: #45a049; /* 悬停时背景色变为#45a049 */  
+    /* 悬停时若需保持其他样式不变，则无需额外设置 */  
+}</string>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>260</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {  
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  
+}  
+  
+QPushButton:hover {  
+    background-color: #45a049; /* 悬停时背景色变为#45a049 */  
+    /* 悬停时若需保持其他样式不变，则无需额外设置 */  
+}</string>
+   </property>
+   <property name="text">
+    <string>确认新密码</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>70</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {  
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  
+}  
+  
+QPushButton:hover {  
+    background-color: #45a049; /* 悬停时背景色变为#45a049 */  
+    /* 悬停时若需保持其他样式不变，则无需额外设置 */  
+}</string>
+   </property>
+   <property name="text">
+    <string>获取验证码</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
