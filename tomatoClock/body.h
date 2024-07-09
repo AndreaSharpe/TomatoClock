@@ -10,8 +10,8 @@
 #include <QSqlDriver>
 #include <QSqlRecord>
 #include <QSqlError>
-#include <task.h>
-
+#include <QMessageBox>
+#include "database.h"
 namespace Ui {
 class Body;
 }
@@ -42,10 +42,18 @@ private slots:
 
     void on_changemsg_clicked();
 
+    void on_editedButton_2_clicked();
+
+    void on_backButton_3_clicked();
+
+    void on_deleteuser_clicked();
+
+    void on_logout_clicked();
+
 private:
     Ui::Body *ui;
     int startEnd = 0;
-    DataBase tasksdb;
+    DataBase tomatoClock;
 };
 
 #endif // BODY_H

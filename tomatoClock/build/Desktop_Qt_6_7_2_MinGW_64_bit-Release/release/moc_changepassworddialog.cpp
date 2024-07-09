@@ -36,9 +36,9 @@ namespace {
 struct qt_meta_stringdata_CLASSChangePasswordDialogENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSChangePasswordDialogENDCLASS = QtMocHelpers::stringData(
     "ChangePasswordDialog",
-    "onSubmitNewPasswordClicked",
+    "on_submitNewPasswordButton_clicked",
     "",
-    "on_submitNewPasswordButton_clicked"
+    "on_returnButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -78,9 +78,9 @@ Q_CONSTINIT const QMetaObject ChangePasswordDialog::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSChangePasswordDialogENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<ChangePasswordDialog, std::true_type>,
-        // method 'onSubmitNewPasswordClicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_submitNewPasswordButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_returnButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -92,8 +92,8 @@ void ChangePasswordDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         auto *_t = static_cast<ChangePasswordDialog *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->onSubmitNewPasswordClicked(); break;
-        case 1: _t->on_submitNewPasswordButton_clicked(); break;
+        case 0: _t->on_submitNewPasswordButton_clicked(); break;
+        case 1: _t->on_returnButton_clicked(); break;
         default: ;
         }
     }

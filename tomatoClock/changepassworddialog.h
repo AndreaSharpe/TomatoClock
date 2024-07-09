@@ -2,7 +2,7 @@
 #define CHANGEPASSWORDDIALOG_H
 
 #include <QDialog>
-// #include"loginSystem.h"
+
 
 namespace Ui {
 class ChangePasswordDialog;
@@ -17,12 +17,18 @@ public:
     ~ChangePasswordDialog();
 
 private slots:
-    void onSubmitNewPasswordClicked();
+    // void onSubmitNewPasswordClicked();
+
+
+    // void on_submitNewPasswordButton_clicked();
 
     void on_submitNewPasswordButton_clicked();
 
+    void on_returnButton_clicked();
+
 private:
     Ui::ChangePasswordDialog *ui;
+
 };
 
 #endif // CHANGEPASSWORDDIALOG_H

@@ -705,7 +705,7 @@ public:
 
         retranslateUi(LoginSystem);
 
-        winStack->setCurrentIndex(1);
+        winStack->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LoginSystem);

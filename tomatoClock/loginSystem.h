@@ -9,6 +9,7 @@
 #include <QSqlDriver>
 #include <QSqlRecord>
 #include <QSqlError>
+#include "database.h"
 
 namespace Ui {
 class LoginSystem;
@@ -31,7 +32,7 @@ public:
 private slots:
     void on_loginButton_clicked();
 
-    void on_logoutButton_clicked();
+    // void on_logoutButton_clicked();
 
     void on_completeRegButton_clicked();
 
@@ -41,11 +42,11 @@ private slots:
 
     void on_backButton_2_clicked();
 
-    void on_editButton_clicked();
+    // void on_editButton_clicked();
 
-    void on_delButton_clicked();
+    // void on_delButton_clicked();
 
-    void on_editedButton_clicked();
+    // void on_editedButton_clicked();
 
     void on_winStack_currentChanged(int arg1);
 
@@ -78,7 +79,8 @@ private:
     Ui::LoginSystem *ui;
     QString username;
     QString password;
-    QSqlDatabase db;
+    // QSqlDatabase db;
+    DataBase tomatoclock;
 };
 
 #endif // LOGINSYSTEM_H

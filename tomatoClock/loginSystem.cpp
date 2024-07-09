@@ -8,41 +8,45 @@
 #include <fstream>
 // #include<iostream>
 #include <string>
+// #include "database.h"
+// #include "database.cpp"
 using namespace std;
 
 
-ofstream file("../../task.txt");
+ofstream file1("task.txt");
 
 LoginSystem::LoginSystem(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginSystem)
 {
     ui->setupUi(this);
-    db  = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("tomato.db");
-    db.open();
-    if(!db.open()){
-        qDebug()<<"database open error!";
-    }
-    else{
-        qDebug()<<"database open success!";
-    }
 
+    tomatoclock.createDatabase();
 
+    // db  = QSqlDatabase::addDatabase("QSQLITE");
+    // db.setDatabaseName("tomato.db");
+    // db.open();
+    // if(!db.open()){
+    //     qDebug()<<"database open error!";
+    // }
+    // else{
+    //     qDebug()<<"database open success!";
+    // }
+
+    tomatoclock.createUserTable();
     //添加sys_users表
-    QSqlQuery query;
-    QString addSys_users = "CREATE TABLE IF NOT EXISTS  sys_users (username text, passwd text, email text)";
-    query.prepare(addSys_users);
-    if(query.exec()){
-        qDebug()<<"table success";
-    }
-    else{
-        qDebug()<<"table error";
-    }
+    // QSqlQuery query;
+    // QString addSys_users = "CREATE TABLE IF NOT EXISTS  sys_users (username text, passwd text, email text)";
+    // query.prepare(addSys_users);
+    // if(query.exec()){
+    //     qDebug()<<"table success";
+    // }
+    // else{
+    //     qDebug()<<"table error";
+    // }
 
     ui->winStack->setCurrentIndex(0);
     // ui->stackedWidget->setCurrentIndex(1);
-
     ui->passwordBox->setEchoMode(QLineEdit::Password);
     ui->passwordBox->setInputMethodHints(Qt::ImhHiddenText| Qt::ImhNoPredictiveText|Qt::ImhNoAutoUppercase);
     ui->pBox->setEchoMode(QLineEdit::Password);
@@ -68,14 +72,14 @@ void LoginSystem::on_loginButton_clicked()
         string str;
         str = this->username.toStdString();
         // qDebug()<<str;
-        file<<str;
-        file.close();
+        file1<<str;
+        file1.close();
         ui->loginLabel->setText("");
         Body *b = new Body;
         b->show();
         this->close();
 
-        // ui->winStack->setCurrentIndex(2);
+        ui->winStack->setCurrentIndex(2);
 
 
 
@@ -92,17 +96,19 @@ bool LoginSystem::Login(QString u, QString p)
 
     bool exists = false;
 
-    QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT username FROM sys_users WHERE username = (:un) AND passwd = (:pw)");
-    checkQuery.bindValue(":un", u);
-    checkQuery.bindValue(":pw", p);
+    // QSqlQuery checkQuery;
+    // checkQuery.prepare("SELECT username FROM sys_users WHERE username = (:un) "
+    //                    "AND passwd = (:pw)");
+    // checkQuery.bindValue(":un", u);
+    // checkQuery.bindValue(":pw", p);
 
-    if (checkQuery.exec())
-    {
-        if (checkQuery.next())
-        {
-            exists = true;
-        }
+    // if (checkQuery.exec()) {
+    //     if (checkQuery.next()) {
+    //         exists = true;
+    //     }
+    // }
+    if(tomatoclock.searchUser(u,p)){
+        exists = true;
     }
 
     return exists;
@@ -116,19 +122,21 @@ void LoginSystem::on_regButton_clicked()
     ui->winStack->setCurrentIndex(1);
 }
 
-void LoginSystem::on_logoutButton_clicked()
-{
-    //登出警告弹窗
-    if(QMessageBox::Yes == QMessageBox(QMessageBox::Question,
-                                        "Login System", "Are you sure you want to logout?",
-                                        QMessageBox::Yes|QMessageBox::No).exec())
-    {
-        this->loggedIn = false;
-        ui->passwordBox->setText("");
-        ui->loginLabel->setText("You signed out!");
-        ui->winStack->setCurrentIndex(0);
-    }
-}
+
+//登出函数
+// void LoginSystem::on_logoutButton_clicked()
+// {
+//     //登出警告弹窗
+//     if(QMessageBox::Yes == QMessageBox(QMessageBox::Question,
+//                                         "Login System", "Are you sure you want to logout?",
+//                                         QMessageBox::Yes|QMessageBox::No).exec())
+//     {
+//         this->loggedIn = false;
+//         ui->passwordBox->setText("");
+//         ui->loginLabel->setText("You signed out!");
+//         ui->winStack->setCurrentIndex(0);
+//     }
+// }
 
 
 //创建新账户函数
@@ -171,33 +179,43 @@ void LoginSystem::on_completeRegButton_clicked()
     //     ui->lBox->setPlaceholderText("Last Name EMPTY!");
     //     halt = true;
     // }
+    // QSqlQuery cQuery;
+    // cQuery.prepare("SELECT username FROM sys_users WHERE username = (:un)");
+    // cQuery.bindValue(":un", ui->uBox->text());
 
-    QSqlQuery cQuery;
-    cQuery.prepare("SELECT username FROM sys_users WHERE username = (:un)");
-    cQuery.bindValue(":un", ui->uBox->text());
+    // if(cQuery.exec())
+    // {
+    //     if(cQuery.next())
+    //     {
+    //         ui->uBox->setText("");
+    //         ui->uBox->setPlaceholderText("该用户名已存在!");
+    //         halt = true;
+    //     }
+    // }
 
-    if(cQuery.exec())
-    {
-        if(cQuery.next())
-        {
-            ui->uBox->setText("");
-            ui->uBox->setPlaceholderText("该用户名已存在!");
-            halt = true;
-        }
+    if(tomatoclock.userExist(ui->uBox->text())){
+        ui->uBox->setText("");
+        ui->uBox->setPlaceholderText("该用户名已存在!");
+        halt = true;
     }
 
-    QSqlQuery cQuery2;
-    cQuery2.prepare("SELECT email FROM sys_users WHERE email = (:em)");
-    cQuery2.bindValue(":em", ui->eBox->text());
+    // QSqlQuery cQuery2;
+    // cQuery2.prepare("SELECT email FROM sys_users WHERE email = (:em)");
+    // cQuery2.bindValue(":em", ui->eBox->text());
 
-    if(cQuery2.exec())
-    {
-        if(cQuery2.next())
-        {
-            ui->eBox->setText("");
-            ui->eBox->setPlaceholderText("该邮箱已被注册!");
-            halt = true;
-        }
+    // if(cQuery2.exec())
+    // {
+    //     if(cQuery2.next())
+    //     {
+    //         ui->eBox->setText("");
+    //         ui->eBox->setPlaceholderText("该邮箱已被注册!");
+    //         halt = true;
+    //     }
+    // }
+    if(tomatoclock.emailExist(ui->eBox->text())){
+        ui->eBox->setText("");
+        ui->eBox->setPlaceholderText("该邮箱已被注册!");
+        halt = true;
     }
 
 
@@ -207,30 +225,34 @@ void LoginSystem::on_completeRegButton_clicked()
     }
     else
     {
-        if (this->picName != "")
-        {
-            QString to = this->picDir+"/"+ui->uBox->text();
+        // if (this->picName != "")
+        // {
+        //     QString to = this->picDir+"/"+ui->uBox->text();
 
-            if (QFile::exists(to))
-            {
-                QFile::remove(to);
-            }
+        //     if (QFile::exists(to))
+        //     {
+        //         QFile::remove(to);
+        //     }
 
-            QFile::copy(this->picName, to);
-            this->picName = "";
-        }
+        //     QFile::copy(this->picName, to);
+        //     this->picName = "";
+        // }
 
         ui->regLabel->setText("");
-        QSqlQuery iQuery;
-        iQuery.prepare("INSERT INTO sys_users(username, passwd, email) VALUES(:un, :pw, :em)");
-        iQuery.bindValue(":un", ui->uBox->text());
-        iQuery.bindValue(":pw", ui->pBox->text());
-        // iQuery.bindValue(":fn", ui->fBox->text());
-        // iQuery.bindValue(":mn", ui->mBox->text());
-        // iQuery.bindValue(":ln", ui->lBox->text());
-        iQuery.bindValue(":em", ui->eBox->text());
 
-        if(iQuery.exec())
+        bool regflag;
+        regflag = tomatoclock.insertUser(ui->uBox->text(),ui->pBox->text(),ui->eBox->text(),ui->rpLabel->text());
+        qDebug()<<regflag;
+        // QSqlQuery iQuery;
+        // iQuery.prepare("INSERT INTO sys_users(username, passwd,
+        // iQuery.bindValue(":pw", ui->pBox->text());
+        // // iQuery.bindValue(":fn", ui->fBox->text()); email) VALUES(:un, :pw, :em)");
+        // iQuery.bindValue(":un", ui->uBox->text());
+        // // iQuery.bindValue(":mn", ui->mBox->text());
+        // // iQuery.bindValue(":ln", ui->lBox->text());
+        // iQuery.bindValue(":em", ui->eBox->text());
+
+        if(regflag)
         {
             ui->uBox->setText("");
             ui->pBox->setText("");
@@ -261,171 +283,192 @@ void LoginSystem::on_backButton_2_clicked()
 
 
 //修改个人信息函数
-void LoginSystem::on_editButton_clicked()
-{
-    QSqlQuery fetcher;
-    fetcher.prepare("SELECT * FROM sys_users WHERE username = (:un) AND passwd = (:pw)");
-    fetcher.bindValue(":un", this->username);
-    fetcher.bindValue(":pw", this->password);
-    fetcher.exec();
+// void LoginSystem::on_editButton_clicked()
+// {
 
-    int idUsername = fetcher.record().indexOf("username");
-    int idPasswd = fetcher.record().indexOf("passwd");
-    int idEmail = fetcher.record().indexOf("email");
-    // int idFname = fetcher.record().indexOf("fname");
-    // int idMname = fetcher.record().indexOf("mname");
-    // int idLname = fetcher.record().indexOf("lname");
 
-    while (fetcher.next())
-    {
-        ui->uBox_2->setText(fetcher.value(idUsername).toString());
-        ui->pBox_2->setText(fetcher.value(idPasswd).toString());
-        ui->eBox_2->setText(fetcher.value(idEmail).toString());
-        // ui->fBox_2->setText(fetcher.value(idFname).toString());
-        // ui->mBox_2->setText(fetcher.value(idMname).toString());
-        // ui->lBox_2->setText(fetcher.value(idLname).toString());
-    }
+    // QSqlQuery fetcher;
+    // fetcher.prepare("SELECT * FROM sys_users WHERE username = (:un) AND passwd = (:pw)");
+    // fetcher.bindValue(":un", this->username);
+    // fetcher.bindValue(":pw", this->password);
+    // fetcher.exec();
 
-    ui->winStack->setCurrentIndex(3);
-}
+    // int idUsername = fetcher.record().indexOf("username");
+    // int idPasswd = fetcher.record().indexOf("passwd");
+    // int idEmail = fetcher.record().indexOf("email");
+    // // int idFname = fetcher.record().indexOf("fname");
+    // // int idMname = fetcher.record().indexOf("mname");
+    // // int idLname = fetcher.record().indexOf("lname");
 
-void LoginSystem::on_delButton_clicked()
-{
-    if(QMessageBox::Yes == QMessageBox(QMessageBox::Question,
-                                        "Login System", "Are you sure you want to delete your account?",
-                                        QMessageBox::Yes|QMessageBox::No).exec())
-    {
-        QString to = this->picDir+"/"+this->username;
+    // while (fetcher.next())
+    // {
+    //     ui->uBox_2->setText(fetcher.value(idUsername).toString());
+    //     ui->pBox_2->setText(fetcher.value(idPasswd).toString());
+    //     ui->eBox_2->setText(fetcher.value(idEmail).toString());
+    //     // ui->fBox_2->setText(fetcher.value(idFname).toString());
+    //     // ui->mBox_2->setText(fetcher.value(idMname).toString());
+    //     // ui->lBox_2->setText(fetcher.value(idLname).toString());
+    // }
 
-        if (QFile::exists(to))
-        {
-            QFile::remove(to);
-        }
+//     ui->winStack->setCurrentIndex(3);
+// }
 
-        QSqlQuery dQuery;
-        dQuery.prepare("DELETE FROM sys_users WHERE username = (:un)");
-        dQuery.bindValue(":un", this->username);
 
-        if(dQuery.exec())
-        {
-            ui->usernameBox->setText("");
-            ui->passwordBox->setText("");
-            ui->loginLabel->setText("Account deleted!");
-            ui->winStack->setCurrentIndex(0);
-        }
-    }
-}
+
+//注销账户
+// void LoginSystem::on_delButton_clicked()
+// {
+//     if(QMessageBox::Yes == QMessageBox(QMessageBox::Question,
+//                                         "Login System", "Are you sure you want to delete your account?",
+//                                         QMessageBox::Yes|QMessageBox::No).exec())
+//     {
+//         QString to = this->picDir+"/"+this->username;
+
+//         if (QFile::exists(to))
+//         {
+//             QFile::remove(to);
+//         }
+
+//         QSqlQuery dQuery;
+//         dQuery.prepare("DELETE FROM sys_users WHERE username = (:un)");
+//         dQuery.bindValue(":un", this->username);
+
+//         if(dQuery.exec())
+//         {
+//             ui->usernameBox->setText("");
+//             ui->passwordBox->setText("");
+//             ui->loginLabel->setText("Account deleted!");
+//             ui->winStack->setCurrentIndex(0);
+//         }
+//     }
+// }
 
 
 //确认修改函数
-void LoginSystem::on_editedButton_clicked()
-{
+// void LoginSystem::on_editedButton_clicked()
+// {
 
 
-    bool halt = false;
+//     bool halt = false;
 
-    if(ui->uBox_2->text() == "")
-    {
-        ui->uBox_2->setPlaceholderText("Username EMPTY!");
-        halt = true;
-    }
+//     if(ui->uBox_2->text() == "")
+//     {
+//         ui->uBox_2->setPlaceholderText("Username EMPTY!");
+//         halt = true;
+//     }
 
-    if(ui->pBox_2->text() == "")
-    {
-        ui->pBox_2->setPlaceholderText("Password EMPTY!");
-        halt = true;
-    }
+//     if(ui->pBox_2->text() == "")
+//     {
+//         ui->pBox_2->setPlaceholderText("Password EMPTY!");
+//         halt = true;
+//     }
 
-    if(ui->eBox_2->text() == "")
-    {
-        ui->eBox_2->setPlaceholderText("E-mail EMPTY!");
-        halt = true;
-    }
+//     if(ui->eBox_2->text() == "")
+//     {
+//         ui->eBox_2->setPlaceholderText("E-mail EMPTY!");
+//         halt = true;
+//     }
 
-    // if(ui->fBox_2->text() == "")
-    // {
-    //     ui->fBox_2->setPlaceholderText("First Name EMPTY!");
-    //     halt = true;
-    // }
+//     // if(ui->fBox_2->text() == "")
+//     // {
+//     //     ui->fBox_2->setPlaceholderText("First Name EMPTY!");
+//     //     halt = true;
+//     // }
 
-    // if(ui->mBox_2->text() == "")
-    // {
-    //     ui->mBox_2->setPlaceholderText("Middle Name (optional)");
-    //     halt = false;
-    // }
+//     // if(ui->mBox_2->text() == "")
+//     // {
+//     //     ui->mBox_2->setPlaceholderText("Middle Name (optional)");
+//     //     halt = false;
+//     // }
 
-    // if(ui->lBox_2->text() == "")
-    // {
-    //     ui->lBox_2->setPlaceholderText("Last Name EMPTY!");
-    //     halt = true;
-    // }
+//     // if(ui->lBox_2->text() == "")
+//     // {
+//     //     ui->lBox_2->setPlaceholderText("Last Name EMPTY!");
+//     //     halt = true;
+//     // }
 
-    QSqlQuery cQuery;
-    cQuery.prepare("SELECT username FROM sys_users WHERE username = (:un)");
-    cQuery.bindValue(":un", ui->uBox->text());
+//     if(tomatoclock.userExist(ui->uBox_2->text())){
+//         ui->uBox_2->setText("");
+//         ui->uBox_2->setPlaceholderText("用户名重复！");
+//         halt = true;
+//     }
 
-    if(cQuery.exec())
-    {
-        if(cQuery.next() && ui->uBox_2->text() != cQuery.value(0).toString())
-        {
-            ui->uBox_2->setText("");
-            ui->uBox_2->setPlaceholderText("用户名重复！");
-            halt = true;
-        }
-    }
+//     // QSqlQuery cQuery;
+//     // cQuery.prepare("SELECT username FROM sys_users WHERE username = (:un)");
+//     // cQuery.bindValue(":un", ui->uBox->text());
 
-    QSqlQuery cQuery2;
-    cQuery2.prepare("SELECT email FROM sys_users WHERE email = (:em)");
-    cQuery2.bindValue(":em", ui->eBox_2->text());
-
-    if(cQuery2.exec())
-    {
-        if(cQuery2.next() && ui->eBox_2->text() != cQuery2.value(0).toString())
-        {
-            ui->eBox_2->setText("");
-            ui->eBox_2->setPlaceholderText("此邮箱已有账号！");
-            halt = true;
-        }
-    }
+//     // if(cQuery.exec())
+//     // {
+//     //     if(cQuery.next() && ui->uBox_2->text() != cQuery.value(0).toString())
+//     //     {
+//     //         ui->uBox_2->setText("");
+//     //         ui->uBox_2->setPlaceholderText("用户名重复！");
+//     //         halt = true;
+//     //     }
+//     // }
 
 
-    if(halt)
-    {
-        ui->regLabel_2->setText("请修改您的错误");
-    }
-    else
-    {
-        if (this->picName != "")
-        {
-            QString to = this->picDir+"/"+ui->uBox_2->text();
 
-            if (QFile::exists(to))
-            {
-                QFile::remove(to);
-            }
+//     if(tomatoclock.emailExist(ui->eBox_2->text())){
+//         ui->eBox_2->setText("");
+//         ui->eBox_2->setPlaceholderText("此邮箱已有账号！");
+//         halt = true;
+//     }
+//     // QSqlQuery cQuery2;
+//     // cQuery2.prepare("SELECT email FROM sys_users WHERE email = (:em)");
+//     // cQuery2.bindValue(":em", ui->eBox_2->text());
 
-            QFile::copy(this->picName, to);
-            this->picName = "";
-        }
+//     // if(cQuery2.exec())
+//     // {
+//     //     if(cQuery2.next() && ui->eBox_2->text() != cQuery2.value(0).toString())
+//     //     {
+//     //         ui->eBox_2->setText("");
+//     //         ui->eBox_2->setPlaceholderText("此邮箱已有账号！");
+//     //         halt = true;
+//     //     }
+//     // }
 
-        ui->regLabel_2->setText("");
-        QSqlQuery iQuery;
-        iQuery.prepare("UPDATE sys_users SET username=(:un), passwd=(:pw), email=(:em) WHERE username=(:uno)");
-        iQuery.bindValue(":un", ui->uBox_2->text());
-        iQuery.bindValue(":pw", ui->pBox_2->text());
-        // iQuery.bindValue(":fn", ui->fBox_2->text());
-        // iQuery.bindValue(":mn", ui->mBox_2->text());
-        // iQuery.bindValue(":ln", ui->lBox_2->text());
-        iQuery.bindValue(":em", ui->eBox_2->text());
-        iQuery.bindValue(":uno", ui->uBox_2->text());
 
-        if(iQuery.exec())
-        {
-            ui->winStack->setCurrentIndex(2);
-        }
+//     if(halt)
+//     {
+//         ui->regLabel_2->setText("请修改您的错误");
+//     }
+//     else
+//     {
+//         // if (this->picName != "")
+//         // {
+//         //     QString to = this->picDir+"/"+ui->uBox_2->text();
 
-    }
-}
+//         //     if (QFile::exists(to))
+//         //     {
+//         //         QFile::remove(to);
+//         //     }
+
+//         //     QFile::copy(this->picName, to);
+//         //     this->picName = "";
+//         // }
+
+//         ui->regLabel_2->setText("");
+//         // QSqlQuery iQuery;
+//         // iQuery.prepare("UPDATE sys_users SET username=(:un), passwd=(:pw), email=(:em) WHERE username=(:uno)");
+//         // iQuery.bindValue(":un", ui->uBox_2->text());
+//         // iQuery.bindValue(":pw", ui->pBox_2->text());
+//         // // iQuery.bindValue(":fn", ui->fBox_2->text());
+//         // // iQuery.bindValue(":mn", ui->mBox_2->text());
+//         // // iQuery.bindValue(":ln", ui->lBox_2->text());
+//         // iQuery.bindValue(":em", ui->eBox_2->text());
+//         // iQuery.bindValue(":uno", ui->uBox_2->text());
+
+//         // if(iQuery.exec())
+//         // {
+//         //     ui->winStack->setCurrentIndex(2);
+//         // }
+
+//         tomatoclock.updateUser(ui->uBox_2->text(),eBox_2->text(),rpBox_2->text());
+
+
+//     }
+// }
 
 
 

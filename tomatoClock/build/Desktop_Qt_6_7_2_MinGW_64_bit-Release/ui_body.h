@@ -51,10 +51,14 @@ public:
     QWidget *page_4;
     QLabel *label_3;
     QLabel *label_4;
-    QLabel *label_7;
     QPushButton *changemsg;
     QPushButton *changePassword;
     QLabel *label_10;
+    QPushButton *logout;
+    QPushButton *deleteuser;
+    QLabel *picture;
+    QLabel *username;
+    QLabel *email;
     QWidget *page_2;
     QLabel *history;
     QLabel *label_8;
@@ -140,7 +144,7 @@ public:
         page_3->setObjectName("page_3");
         label_9 = new QLabel(page_3);
         label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(90, 70, 151, 81));
+        label_9->setGeometry(QRect(120, 210, 151, 81));
         stackedWidget->addWidget(page_3);
         page_5 = new QWidget();
         page_5->setObjectName("page_5");
@@ -292,11 +296,6 @@ public:
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(40, 250, 54, 16));
         label_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
-        label_7 = new QLabel(page_4);
-        label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(50, 60, 121, 91));
-        label_7->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"color: rgb(0, 0, 0);"));
         changemsg = new QPushButton(page_4);
         changemsg->setObjectName("changemsg");
         changemsg->setGeometry(QRect(400, 320, 80, 24));
@@ -309,6 +308,23 @@ public:
         label_10->setObjectName("label_10");
         label_10->setGeometry(QRect(310, 40, 141, 41));
         label_10->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        logout = new QPushButton(page_4);
+        logout->setObjectName("logout");
+        logout->setGeometry(QRect(90, 300, 80, 24));
+        logout->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        deleteuser = new QPushButton(page_4);
+        deleteuser->setObjectName("deleteuser");
+        deleteuser->setGeometry(QRect(90, 360, 80, 24));
+        deleteuser->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        picture = new QLabel(page_4);
+        picture->setObjectName("picture");
+        picture->setGeometry(QRect(80, 80, 81, 81));
+        username = new QLabel(page_4);
+        username->setObjectName("username");
+        username->setGeometry(QRect(120, 200, 54, 16));
+        email = new QLabel(page_4);
+        email->setObjectName("email");
+        email->setGeometry(QRect(110, 250, 54, 16));
         stackedWidget->addWidget(page_4);
         page_2 = new QWidget();
         page_2->setObjectName("page_2");
@@ -354,10 +370,14 @@ public:
         rpLabel_3->setText(QCoreApplication::translate("Body", "<img src=\":user.png\" />", nullptr));
         label_3->setText(QCoreApplication::translate("Body", "\347\224\250\346\210\267\345\220\215\357\274\232", nullptr));
         label_4->setText(QCoreApplication::translate("Body", "\351\202\256\347\256\261\357\274\232", nullptr));
-        label_7->setText(QCoreApplication::translate("Body", "\345\244\264\345\203\217", nullptr));
         changemsg->setText(QCoreApplication::translate("Body", "\344\277\256\346\224\271\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
         changePassword->setText(QCoreApplication::translate("Body", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
         label_10->setText(QCoreApplication::translate("Body", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:700;\">\344\270\252\344\272\272\344\270\255\345\277\203\347\225\214\351\235\242</span></p></body></html>", nullptr));
+        logout->setText(QCoreApplication::translate("Body", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
+        deleteuser->setText(QCoreApplication::translate("Body", "\346\263\250\351\224\200\350\264\246\345\217\267", nullptr));
+        picture->setText(QCoreApplication::translate("Body", "TextLabel", nullptr));
+        username->setText(QCoreApplication::translate("Body", "TextLabel", nullptr));
+        email->setText(QCoreApplication::translate("Body", "TextLabel", nullptr));
         history->setText(QCoreApplication::translate("Body", "<html><head/><body><p><span style=\" font-size:11pt;\">TextLabel</span></p></body></html>", nullptr));
         label_8->setText(QCoreApplication::translate("Body", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:700;\">\345\216\206\345\217\262\350\256\260\345\275\225\347\225\214\351\235\242</span></p></body></html>", nullptr));
     } // retranslateUi

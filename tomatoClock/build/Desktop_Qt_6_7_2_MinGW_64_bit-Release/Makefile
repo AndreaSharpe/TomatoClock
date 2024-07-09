@@ -222,6 +222,7 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/qt_config.prf \
 		E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/exclusive_builds.prf \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/toolchain.prf \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/default_pre.prf \
@@ -252,7 +253,6 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Sql.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Core.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/build_pass.prf \
 		../../images.qrc
 	$(QMAKE) -o Makefile ..\..\tomatoClock.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
@@ -408,6 +408,7 @@ E:/programfile/6.7.2/mingw_64/mkspecs/features/qt_functions.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/qt_config.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/exclusive_builds.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/toolchain.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/default_pre.prf:
@@ -438,7 +439,6 @@ E:/programfile/6.7.2/mingw_64/lib/Qt6Gui.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Sql.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Core.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
 ../../images.qrc:
 qmake: FORCE

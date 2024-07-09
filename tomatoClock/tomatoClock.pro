@@ -11,17 +11,17 @@ CONFIG += c++17
 SOURCES += \
     body.cpp \
     changepassworddialog.cpp \
+    database.cpp \
     loginSystem.cpp \
     main.cpp \
-    reset.cpp \
-    task.cpp
+    reset.cpp
 
 HEADERS += \
     body.h \
     changepassworddialog.h \
+    database.h \
     loginSystem.h \
-    reset.h \
-    task.h
+    reset.h
 
 FORMS += \
     body.ui \

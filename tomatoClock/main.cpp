@@ -1,6 +1,6 @@
 #include "loginSystem.h"
 // #include "body.h"
-#include "changepassworddialog.h"
+// #include "changepassworddialog.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

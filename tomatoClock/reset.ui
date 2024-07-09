@@ -6,103 +6,194 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
-    <height>360</height>
+    <width>511</width>
+    <height>314</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>511</width>
+    <height>314</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>511</width>
+    <height>314</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>511</width>
+    <height>314</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton_2">
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>290</y>
+     <x>120</x>
+     <y>270</y>
      <width>80</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  </string>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>270</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  </string>
    </property>
    <property name="text">
     <string>确认新密码</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>110</y>
+     <x>380</x>
+     <y>90</y>
      <width>80</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+    font: 10px &quot;Microsoft YaHei UI&quot;, sans-serif; /* 字体大小设置为10px */  
+    color: white; /* 文字颜色设置为白色 */  
+    background-color: #5cb85c; /* 设置背景色为比#45a049浅的绿色 */  
+    /* 其他样式属性 */  
+</string>
    </property>
    <property name="text">
     <string>获取验证码</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>70</y>
-     <width>299</width>
-     <height>23</height>
+     <x>150</x>
+     <y>130</y>
+     <width>319</width>
+     <height>31</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>161</y>
-     <width>299</width>
-     <height>23</height>
-    </rect>
+   <property name="styleSheet">
+    <string notr="true">
+    background-color: white; /* 设置背景色为白色 */  
+    border: 2px solid white; /* 设置边框为白色，宽度为2px */  
+    border-radius: 0px; /* 设置边框圆角为0，即方形边框 */  
+    padding: 5px; /* 添加内边距 */  
+	
+	color: rgb(0, 0, 0);</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>252</y>
-     <width>299</width>
-     <height>23</height>
+     <x>150</x>
+     <y>200</y>
+     <width>319</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">
+    background-color: white; /* 设置背景色为白色 */  
+    border: 2px solid white; /* 设置边框为白色，宽度为2px */  
+    border-radius: 0px; /* 设置边框圆角为0，即方形边框 */  
+    padding: 5px; /* 添加内边距 */  
+	color: rgb(0, 0, 0);</string>
+   </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>70</y>
-     <width>60</width>
-     <height>86</height>
+     <x>150</x>
+     <y>40</y>
+     <width>319</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white; 
+    border: 2px solid white; 
+    border-radius: 0px; 
+    padding: 5px; 
+	color: rgb(0, 0, 0);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>65</width>
+     <height>79</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+font: 10pt &quot;黑体&quot;;</string>
    </property>
    <property name="text">
     <string>请输入邮箱</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>162</y>
-     <width>60</width>
-     <height>85</height>
+     <x>50</x>
+     <y>110</y>
+     <width>65</width>
+     <height>79</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;黑体&quot;;
+</string>
    </property>
    <property name="text">
     <string>验证码</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>253</y>
-     <width>60</width>
-     <height>86</height>
+     <x>50</x>
+     <y>180</y>
+     <width>65</width>
+     <height>79</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;黑体&quot;;</string>
    </property>
    <property name="text">
     <string>新密码</string>

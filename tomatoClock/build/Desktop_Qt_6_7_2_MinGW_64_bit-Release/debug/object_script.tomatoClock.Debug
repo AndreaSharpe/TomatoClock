@@ -1,9 +1,9 @@
 debug/body.o
 debug/changepassworddialog.o
+debug/database.o
 debug/loginSystem.o
 debug/main.o
 debug/reset.o
-debug/task.o
 debug/qrc_images.o
 debug/moc_body.o
 debug/moc_changepassworddialog.o
