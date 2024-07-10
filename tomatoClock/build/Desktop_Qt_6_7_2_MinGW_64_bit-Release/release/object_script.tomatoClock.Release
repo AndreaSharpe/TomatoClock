@@ -3,9 +3,13 @@ release/changepassworddialog.o
 release/database.o
 release/loginSystem.o
 release/main.o
+release/personaldoc.o
 release/reset.o
+release/tomatoclock.o
 release/qrc_images.o
 release/moc_body.o
 release/moc_changepassworddialog.o
 release/moc_loginSystem.o
+release/moc_personaldoc.o
 release/moc_reset.o
+release/moc_tomatoclock.o

@@ -3,9 +3,13 @@ debug/changepassworddialog.o
 debug/database.o
 debug/loginSystem.o
 debug/main.o
+debug/personaldoc.o
 debug/reset.o
+debug/tomatoclock.o
 debug/qrc_images.o
 debug/moc_body.o
 debug/moc_changepassworddialog.o
 debug/moc_loginSystem.o
+debug/moc_personaldoc.o
 debug/moc_reset.o
+debug/moc_tomatoclock.o

@@ -83,6 +83,10 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_freetype.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_libjpeg.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_libpng.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_charts.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_charts_private.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_chartsqml.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_chartsqml_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_concurrent.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_core.pri \
@@ -116,6 +120,11 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_linguist.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimedia.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_network.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_network_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_opengl.pri \
@@ -157,6 +166,7 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_qmlxmllistmodel.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_qmlxmllistmodel_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -201,6 +211,8 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quicktestutilsprivate_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickwidgets.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_spatialaudio.pri \
+		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_spatialaudio_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_sql.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_sql_private.pri \
 		E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_svg.pri \
@@ -248,9 +260,14 @@ Makefile: ../../tomatoClock.pro E:/programfile/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/yacc.prf \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/lex.prf \
 		../../tomatoClock.pro \
+		E:/programfile/6.7.2/mingw_64/lib/Qt6Multimedia.prl \
+		E:/programfile/6.7.2/mingw_64/lib/Qt6Charts.prl \
+		E:/programfile/6.7.2/mingw_64/lib/Qt6OpenGLWidgets.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Widgets.prl \
+		E:/programfile/6.7.2/mingw_64/lib/Qt6OpenGL.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Gui.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Sql.prl \
+		E:/programfile/6.7.2/mingw_64/lib/Qt6Network.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6Core.prl \
 		E:/programfile/6.7.2/mingw_64/lib/Qt6EntryPoint.prl \
 		E:/programfile/6.7.2/mingw_64/mkspecs/features/build_pass.prf \
@@ -269,6 +286,10 @@ E:/programfile/6.7.2/mingw_64/mkspecs/qconfig.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_freetype.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_libjpeg.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_ext_libpng.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_charts.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_charts_private.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_chartsqml.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_chartsqml_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_concurrent.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_core.pri:
@@ -302,6 +323,11 @@ E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_labssharedimage_private.pri
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_labswavefrontmesh_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_linguist.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimedia.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_network.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_network_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_opengl.pri:
@@ -343,6 +369,7 @@ E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_qmlworkerscript_private.pri
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_qmlxmllistmodel.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_qmlxmllistmodel_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quick_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
@@ -387,6 +414,8 @@ E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quicktestutilsprivate_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickwidgets.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_spatialaudio.pri:
+E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_spatialaudio_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_sql.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_sql_private.pri:
 E:/programfile/6.7.2/mingw_64/mkspecs/modules/qt_lib_svg.pri:
@@ -434,9 +463,14 @@ E:/programfile/6.7.2/mingw_64/mkspecs/features/exceptions.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/yacc.prf:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/lex.prf:
 ../../tomatoClock.pro:
+E:/programfile/6.7.2/mingw_64/lib/Qt6Multimedia.prl:
+E:/programfile/6.7.2/mingw_64/lib/Qt6Charts.prl:
+E:/programfile/6.7.2/mingw_64/lib/Qt6OpenGLWidgets.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Widgets.prl:
+E:/programfile/6.7.2/mingw_64/lib/Qt6OpenGL.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Gui.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Sql.prl:
+E:/programfile/6.7.2/mingw_64/lib/Qt6Network.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6Core.prl:
 E:/programfile/6.7.2/mingw_64/lib/Qt6EntryPoint.prl:
 E:/programfile/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
