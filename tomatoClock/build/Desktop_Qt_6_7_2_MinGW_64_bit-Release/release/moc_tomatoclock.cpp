@@ -58,7 +58,10 @@ constexpr auto qt_meta_stringdata_CLASSTomatoClockENDCLASS = QtMocHelpers::strin
     "on_addTaskBtn_clicked",
     "on_editTaskBtn_clicked",
     "on_delTaskBtn_clicked",
-    "updateTaskDisplay"
+    "updateTaskDisplay",
+    "isTimerFinished",
+    "clearDisplayWidgets",
+    "on_tableWidget_itemSelectionChanged"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -71,7 +74,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTomatoClockENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,24 +82,27 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTomatoClockENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  122,    2, 0x08,    1 /* Private */,
-       3,    0,  123,    2, 0x08,    2 /* Private */,
-       4,    0,  124,    2, 0x08,    3 /* Private */,
-       5,    0,  125,    2, 0x08,    4 /* Private */,
-       6,    0,  126,    2, 0x08,    5 /* Private */,
-       7,    0,  127,    2, 0x08,    6 /* Private */,
-       8,    0,  128,    2, 0x08,    7 /* Private */,
-       9,    0,  129,    2, 0x08,    8 /* Private */,
-      10,    0,  130,    2, 0x08,    9 /* Private */,
-      11,    1,  131,    2, 0x08,   10 /* Private */,
-      14,    1,  134,    2, 0x08,   12 /* Private */,
-      16,    0,  137,    2, 0x08,   14 /* Private */,
-      17,    0,  138,    2, 0x08,   15 /* Private */,
-      18,    0,  139,    2, 0x08,   16 /* Private */,
-      19,    0,  140,    2, 0x08,   17 /* Private */,
-      20,    0,  141,    2, 0x08,   18 /* Private */,
-      21,    0,  142,    2, 0x08,   19 /* Private */,
-      22,    0,  143,    2, 0x08,   20 /* Private */,
+       1,    0,  140,    2, 0x08,    1 /* Private */,
+       3,    0,  141,    2, 0x08,    2 /* Private */,
+       4,    0,  142,    2, 0x08,    3 /* Private */,
+       5,    0,  143,    2, 0x08,    4 /* Private */,
+       6,    0,  144,    2, 0x08,    5 /* Private */,
+       7,    0,  145,    2, 0x08,    6 /* Private */,
+       8,    0,  146,    2, 0x08,    7 /* Private */,
+       9,    0,  147,    2, 0x08,    8 /* Private */,
+      10,    0,  148,    2, 0x08,    9 /* Private */,
+      11,    1,  149,    2, 0x08,   10 /* Private */,
+      14,    1,  152,    2, 0x08,   12 /* Private */,
+      16,    0,  155,    2, 0x08,   14 /* Private */,
+      17,    0,  156,    2, 0x08,   15 /* Private */,
+      18,    0,  157,    2, 0x08,   16 /* Private */,
+      19,    0,  158,    2, 0x08,   17 /* Private */,
+      20,    0,  159,    2, 0x08,   18 /* Private */,
+      21,    0,  160,    2, 0x08,   19 /* Private */,
+      22,    0,  161,    2, 0x08,   20 /* Private */,
+      23,    0,  162,    2, 0x08,   21 /* Private */,
+      24,    0,  163,    2, 0x08,   22 /* Private */,
+      25,    0,  164,    2, 0x08,   23 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -115,6 +121,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTomatoClockENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -167,6 +176,12 @@ Q_CONSTINIT const QMetaObject TomatoClock::staticMetaObject = { {
         // method 'on_delTaskBtn_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateTaskDisplay'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'isTimerFinished'
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'clearDisplayWidgets'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_tableWidget_itemSelectionChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -196,6 +211,10 @@ void TomatoClock::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 15: _t->on_editTaskBtn_clicked(); break;
         case 16: _t->on_delTaskBtn_clicked(); break;
         case 17: _t->updateTaskDisplay(); break;
+        case 18: { bool _r = _t->isTimerFinished();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 19: _t->clearDisplayWidgets(); break;
+        case 20: _t->on_tableWidget_itemSelectionChanged(); break;
         default: ;
         }
     }
@@ -220,13 +239,13 @@ int TomatoClock::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 18;
+        _id -= 21;
     }
     return _id;
 }
