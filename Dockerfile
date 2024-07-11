@@ -8,9 +8,11 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新包列表并安装必要的工具和Qt开发环境
-RUN apt-get update && \
-    apt-get install -y build-essential gdb cmake qtbase5-dev qt5-qmake qtbase5-dev-tools libqt5xmlpatterns5-dev && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    qt6-base-dev \
+    libsqlite3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
 WORKDIR /app
