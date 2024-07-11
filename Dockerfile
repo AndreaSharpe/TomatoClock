@@ -18,11 +18,9 @@ WORKDIR /app
 # 复制项目文件到容器中
 COPY . /app
 
-# 创建构建目录并生成Makefile
-RUN mkdir build && cd build && qmake ..
+# 使用 qmake6 生成 Makefile 并编译项目
+RUN qmake6 basic.pro \
+    && make
 
-# 编译项目
-RUN make -C build
-
-# 设置容器启动时的默认命令
-CMD ["sh", "-c", "echo 'Container started successfully'"]
+# 定义容器启动时执行的命令
+# CMD ["./basic"]
