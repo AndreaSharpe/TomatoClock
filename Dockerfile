@@ -25,8 +25,8 @@ WORKDIR /app
 COPY . /app
 
 # 使用 qmake6 生成 Makefile 并编译项目
-RUN qmake6 basic.pro \
-    && make
+RUN qmake6 basic.pro 
+RUN make
 
 # 定义容器启动时执行的命令
 # CMD ["./basic"]
