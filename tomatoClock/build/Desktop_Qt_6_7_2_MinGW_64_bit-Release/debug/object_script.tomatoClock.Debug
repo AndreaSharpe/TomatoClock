@@ -3,6 +3,7 @@ debug/changepassworddialog.o
 debug/database.o
 debug/loginSystem.o
 debug/main.o
+debug/musicPlayer.o
 debug/personaldoc.o
 debug/reset.o
 debug/tomatoclock.o

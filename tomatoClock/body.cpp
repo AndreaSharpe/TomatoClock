@@ -5,8 +5,8 @@
 // #include "personaldoc.cpp"
 // #include "database.h"
 // #include "task.h"
-// #include <fstream>
-// #include<string>
+#include <fstream>
+#include<string>
 // #include<iostream>
 #include<QFile>
 
@@ -125,6 +125,24 @@ Body::Body(QWidget *parent)
         ui->tableWidget->selectRow(currentTaskIndex);
     }
 
+    ui->endDateEdit->hide();
+
+
+    //历史记录测试
+    QString str = "delete from history";
+    QSqlQuery q;
+    q.prepare(str);
+    q.exec();
+    tomatoClock.createHistoryTable();
+    // tomatoClock.insertHistoryTable("123","33",12,"2024.7.11",0);
+    int num = tomatoClock.searchTomatoNum("2023.1.1","2024.8.4");
+    qDebug()<<num;
+    QDateTime current_date_time =QDateTime::currentDateTime();
+    QString current_date =current_date_time.toString("yyyy.MM.dd");
+    // qDebug()<<current_date;
+    tomatoClock.insertHistoryTable("123","24",32,current_date,1);
+
+
 }
 
 Body::~Body()
@@ -184,17 +202,27 @@ void Body::on_personButton_clicked()
 
 void Body::on_changePassword_clicked()
 {
-    ChangePasswordDialog *w = new ChangePasswordDialog;
-    w->show();
-    this->close();
+    if(QMessageBox::Yes == QMessageBox(QMessageBox::Question,
+                                        "Login System", "你确定要修改密码吗?",
+                                        QMessageBox::Yes|QMessageBox::No).exec())
+    {
+        // qApp->exit();
+        ChangePasswordDialog *w = new ChangePasswordDialog;
+        w->show();
+        this->close();
+
+    }
+
 }
 
 
 void Body::on_changemsg_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
-
+    ui->rpLabel_3->setText(ui->picture->text());
+    ui->uBox_3->setText(ui->username->text());
 }
+
 
 void Body::on_editedButton_2_clicked()
 {
@@ -207,13 +235,6 @@ void Body::on_editedButton_2_clicked()
         halt = true;
     }
 
-
-
-    if(ui->eBox_3->text() == "")
-    {
-        ui->eBox_3->setPlaceholderText("E-mail EMPTY!");
-        halt = true;
-    }
 
     // if(ui->fBox_2->text() == "")
     // {
@@ -253,13 +274,6 @@ void Body::on_editedButton_2_clicked()
     //     }
     // }
 
-
-
-    if(tomatoClock.emailExist(ui->eBox_3->text())){
-        ui->eBox_3->setText("");
-        ui->eBox_3->setPlaceholderText("此邮箱已有账号！");
-        halt = true;
-    }
     // QSqlQuery cQuery2;
     // cQuery2.prepare("SELECT email FROM sys_users WHERE email = (:em)");
     // cQuery2.bindValue(":em", ui->eBox_2->text());
@@ -275,12 +289,12 @@ void Body::on_editedButton_2_clicked()
     // }
 
 
-    if(halt)
-    {
-        ui->regLabel_3->setText("请修改您的错误");
-    }
-    else
-    {
+    // if(halt)
+    // {
+    //     ui->regLabel_3->setText("请修改您的错误");
+    // }
+    // else
+    // {
         // if (this->picName != "")
         // {
         //     QString to = this->picDir+"/"+ui->uBox_2->text();
@@ -294,7 +308,7 @@ void Body::on_editedButton_2_clicked()
         //     this->picName = "";
         // }
 
-        ui->regLabel_3->setText("");
+        // ui->regLabel_3->setText("");
         // QSqlQuery iQuery;
         // iQuery.prepare("UPDATE sys_users SET username=(:un), passwd=(:pw), email=(:em) WHERE username=(:uno)");
         // iQuery.bindValue(":un", ui->uBox_2->text());
@@ -309,10 +323,22 @@ void Body::on_editedButton_2_clicked()
         // {
         //     ui->winStack->setCurrentIndex(2);
         // }
+        qDebug()<<username;
+    if(!halt){
 
-        tomatoClock.updateUser(ui->uBox_3->text(),ui->eBox_3->text(),ui->rpLabel_3->text());
-        ui->stackedWidget->setCurrentIndex(3);
+        tomatoClock.updateUser(username,ui->uBox_3->text(),ui->rpLabel_3->text());
+        ui->stackedWidget->setCurrentIndex(4);
+        ui->picture->setText(ui->rpLabel_3->text());
+        ui->username->setText(ui->uBox_3->text());
+        username = ui->uBox_3->text();
+        ofstream file4("task.txt");
+        string str;
+        str = this->username.toStdString();
+        // qDebug()<<str;
+        file4<<str;
+        file4.close();
     }
+    // }
 }
 
 
@@ -347,7 +373,7 @@ void Body::on_logout_clicked()
             // qApp->exit();
             LoginSystem *w = new LoginSystem;
             w->show();
-            // this->close();
+            this->close();
 
         }
 }
@@ -446,8 +472,15 @@ void Body::updateTaskTable() {
             ui->tableWidget->setItem(i, 1, new QTableWidgetItem(QString::number(task.duration)));
             ui->tableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(task.breakTime)));
             ui->tableWidget->setItem(i, 3, new QTableWidgetItem(QString("确认")));
-            qDebug()<<"0";
+
         }
+    }
+    else if(currentTaskIndex!=-1){
+        const task &task = tasks[currentTaskIndex];
+        ui->tableWidget->setItem(currentTaskIndex, 0, new QTableWidgetItem(task.name));
+        ui->tableWidget->setItem(currentTaskIndex, 1, new QTableWidgetItem(QString::number(task.duration)));
+        ui->tableWidget->setItem(currentTaskIndex, 2, new QTableWidgetItem(QString::number(task.breakTime)));
+        ui->tableWidget->setItem(currentTaskIndex, 3, new QTableWidgetItem(QString("确认")));
     }
     // 如果行数过多（理论上不应该发生，除非外部代码修改了tableWidget），这里不处理
 
@@ -656,8 +689,8 @@ void Body::initSysTrayIcon()
 //创建动作
 void Body::createActions()
 {
-    m_pauseaction = new QAction("打开主面板", this);
-    connect(m_pauseaction,SIGNAL(triggered()),this,SLOT(on_pauseaction()));
+    m_openaction = new QAction("打开主面板", this);
+    connect(m_openaction,SIGNAL(triggered()),this,SLOT(on_openaction()));
     m_showMainAction = new QAction("个人中心", this);
     connect(m_showMainAction,SIGNAL(triggered()),this,SLOT(on_showMainAction()));
     m_exitAppAction = new QAction("退出", this);
@@ -678,14 +711,19 @@ void Body::createMenu()
     //把QMenu赋给QSystemTrayIcon对象
     m_sysTrayIcon->setContextMenu(m_menu);
     m_menu->addSeparator();
-    m_menu->addAction(m_pauseaction);
+    m_menu->addAction(m_openaction);
 }
 
 //当在系统托盘点击菜单内的显示个人中心界面操作
 void Body::on_showMainAction()
 {
-    // m_personaldoc->show(); // 显示个人中心页面
+    this->show(); // 显示个人中心页面
+    ui->stackedWidget->setCurrentIndex(4);
+}
 
+void Body::on_openaction(){
+    this->show();
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 //当在系统托盘点击菜单内的退出程序操作
@@ -723,4 +761,93 @@ void Body::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
 
 
 
+
+
+
+//历史记录模块
+void Body::on_lineEdit_selectionChanged()
+{
+    ui->startDateEdit->show();
+    ui->endDateEdit->hide();
+
+    qDebug()<<"dddd";
+}
+
+
+void Body::on_startDateEdit_selectionChanged()
+{
+    QDate lineEdit = ui->startDateEdit->selectedDate();
+    ui->lineEdit->setText(lineEdit.toString("yyyy.MM.dd"));
+}
+
+
+
+
+void Body::on_endDateEdit_selectionChanged()
+{
+    QDate lineEdit = ui->endDateEdit->selectedDate();
+    ui->lineEdit_2->setText(lineEdit.toString("yyyy.MM.dd"));
+}
+
+
+void Body::on_lineEdit_2_selectionChanged()
+{
+    ui->endDateEdit->show();
+    ui->startDateEdit->hide();
+    qDebug()<<"ssss";
+
+
+}
+
+
+
+void Body::on_searchHistory_clicked()
+{
+    QString startTime = ui->lineEdit->text();
+    QString endTime = ui->lineEdit_2->text();
+    if(startTime!=""&&endTime!=""){
+        int num = tomatoClock.searchTomatoNum(startTime,endTime);
+
+        QString s = QString::number(num);
+        ui->tomatoNum->setText(s);
+        Time time;
+        vector<HistoryLines> lines;
+        tomatoClock.searchTime(startTime,endTime,time,lines);
+        for(int i = 0;i<lines.size();i++){
+            qDebug()<<lines[i].taskName<<"  "<<lines[i].lastTime<<"  "<<lines[i].date;
+
+        }
+        qDebug()<<time.hour<<":"<<time.minute;
+        QString hour = QString::number(time.hour);
+        QString minute = QString::number(time.minute);
+        ui->totalTime->setText(QString("%1时%2分").arg(hour).arg(minute));
+    }
+    else{
+        ui->historyNotice->setText("始末时间不能为空！");
+    }
+
+}
+
+
+void Body::on_uplButton_3_clicked()
+{
+    newpicture = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Image Files (*.png *.jpg *.bmp)"));
+    ui->rpLabel_3->setText("<img src=\"file:///"+newpicture+"\" alt=\"Image read error!\" height=\"128\" width=\"128\" />");
+}
+
+
+void Body::on_pushButton_clicked()
+{
+        QString curPash =QDir::currentPath();
+        QString dlgTitle="选择音频文件";
+        QString filter="音频文件(*.mp3 *.wav *.wma)mp3文件(*.mp3);;wav文件(*.wav);;wma文件(*.wma);;所有文件(*.*)";
+        QStringList fileList = QFileDialog::getOpenFileNames(this,dlgTitle,curPash,filter);
+        if(fileList.count()<1)
+            return;
+        for(int i = 0;i<fileList.count();i++)
+        {
+            ui->bgm->setText(fileList.at(i));
+            //将选择的文件显示在文本框上
+        }
+}
 

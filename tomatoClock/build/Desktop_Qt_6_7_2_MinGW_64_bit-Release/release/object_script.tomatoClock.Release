@@ -3,6 +3,7 @@ release/changepassworddialog.o
 release/database.o
 release/loginSystem.o
 release/main.o
+release/musicPlayer.o
 release/personaldoc.o
 release/reset.o
 release/tomatoclock.o

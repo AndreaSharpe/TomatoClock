@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Imgs/023-10-27 161236.png</file>
+        <file>Imgs/clockB.png</file>
+        <file>Imgs/clockW.png</file>
+        <file>Imgs/homeB.png</file>
+        <file>Imgs/homeW.png</file>
+        <file>Imgs/labelB.png</file>
+        <file>Imgs/labelW.png</file>
+        <file>Imgs/personalB.png</file>
+        <file>Imgs/personalW.png</file>
+        <file>Imgs/016.svg</file>
+        <file>Imgs/emotions-3490223_1280.jpg</file>
+        <file>Imgs/flash-2702168_1280.jpg</file>
+        <file>Imgs/lake-7624330_1280.jpg</file>
+        <file>Imgs/user.svg</file>
+        <file>Imgs/lake-7581726_1280.png</file>
+        <file>Imgs/mountains-8540738_1280.png</file>
+        <file>Imgs/pexels-photo-257092.png</file>
+        <file>Imgs/pexels-photo-1631677.png</file>
+        <file>Imgs/sunrise-8675236_1280.png</file>
+        <file>Imgs/password.svg</file>
+        <file>Imgs/tomato.svg</file>
+    </qresource>
+</RCC>

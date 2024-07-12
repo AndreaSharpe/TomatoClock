@@ -26,6 +26,7 @@
 #include <QtCharts/QChart>
 
 
+
 #include<QMouseEvent>
 #include<QTimer>
 #include<QTime>
@@ -50,6 +51,7 @@
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QMessageBox>
+
 #include "database.h"
 // #include "personaldoc.h"
 namespace Ui {
@@ -107,6 +109,8 @@ private slots:
 
     void on_exitAppAction();
 
+    void on_openaction();
+
     void closeEvent(QCloseEvent *event);
 
     void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
@@ -146,6 +150,21 @@ private slots:
 
     void on_tableWidget_cellClicked(int row, int column);
 
+
+    void on_lineEdit_selectionChanged();
+
+    void on_startDateEdit_selectionChanged();
+
+    void on_endDateEdit_selectionChanged();
+
+    void on_lineEdit_2_selectionChanged();
+
+    void on_searchHistory_clicked();
+
+    void on_uplButton_3_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::Body *ui;
     int startEnd = 0;
@@ -155,8 +174,8 @@ private:
     QMenu *m_menu;             //菜单
     QAction *m_showMainAction; //动作
     QAction *m_exitAppAction;  //动作
-    QAction *m_pauseaction;
-    // personaldoc *m_personaldoc;
+    QAction *m_openaction;
+    Body *m_body;
     QTimer *timer;
     QVector<task> tasks;
     QTime time;
@@ -168,12 +187,20 @@ private:
     int breaktimeset; //休息时间
     QProgressBar *progressbar;
     QPainter *painter;
-    QMediaPlayer *player;
+
     QMediaPlayer *success;
     QMediaPlayer *all_success;
     task oneTask;
     QString taskName;
 
+
+    QString newusername;
+    QString newemail;
+    QString newpicture;
+
+
+    //音乐
+    QMediaPlayer *player;
 };
 
 #endif // BODY_H
