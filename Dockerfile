@@ -7,13 +7,16 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && 
 # 设置非交互模式
 ENV DEBIAN_FRONTEND=noninteractive
 
-# 更新包列表并安装必要的工具和Qt开发环境
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    qt6-base-dev \
-    qmake6 \
-    libsqlite3-dev \
-    && rm -rf /var/lib/apt/lists/*
+# 更新apt源并安装必要的软件包和依赖
+RUN apt-get update 
+RUN apt-get install -y build-essential \
+                    qt6-base-dev \
+                    qmake6 \
+                    qt6-charts-dev \
+                    libmysqlclient-dev \
+                    linguist-qt6 \
+                    libqt6sql6-mysql \
+                    qt6-l10n-tools
 
 # 设置工作目录
 WORKDIR /app
