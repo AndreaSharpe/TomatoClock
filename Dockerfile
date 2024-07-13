@@ -8,6 +8,14 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && 
 # 设置非交互模式
 ENV DEBIAN_FRONTEND=noninteractive
 
+# 设置时区
+ENV TZ=Asia/Shanghai
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
+    apt-get update && \
+    apt-get install -y tzdata
+
+
 # 更新apt源并安装必要的软件包和依赖
 RUN apt-get update 
 RUN apt-get install -y build-essential \
