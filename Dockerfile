@@ -16,7 +16,9 @@ RUN apt-get install -y build-essential \
                     libmysqlclient-dev \
                     linguist-qt6 \
                     libqt6sql6-mysql \
-                    qt6-l10n-tools
+                    qt6-l10n-tools \
+                    libqt5multimedia*   qtmultimedia5-*
+
 
 # 设置工作目录
 WORKDIR /app
