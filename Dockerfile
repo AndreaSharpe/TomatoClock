@@ -1,3 +1,4 @@
+
 FROM ubuntu:latest
 
 # 使用阿里云的镜像源
@@ -17,7 +18,7 @@ RUN apt-get install -y build-essential \
                     linguist-qt6 \
                     libqt6sql6-mysql \
                     qt6-l10n-tools \
-                    libqt5multimedia*   qtmultimedia5-*
+                    qtmultimedia5-dev
 
 
 # 设置工作目录
