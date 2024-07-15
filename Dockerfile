@@ -27,6 +27,7 @@ RUN apt-get install -y build-essential \
                     libqt6sql6-mysql \
                     qt6-l10n-tools
 RUN apt-get install qtmultimedia5-dev -y
+RUN apt-get install libpul se-dev
 
 # 设置工作目录
 WORKDIR /app
