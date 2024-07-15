@@ -28,6 +28,7 @@ RUN apt-get install -y build-essential \
                     qt6-l10n-tools
 RUN apt-get install qtmultimedia5-dev -y
 RUN apt-get install libpulse-dev -y
+RUN apt-get install libqt5multimedia5 libqt5multimediawidgets5
 
 # 设置工作目录
 WORKDIR /app
